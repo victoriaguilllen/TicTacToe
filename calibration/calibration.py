@@ -48,17 +48,7 @@ def calibration():
 
 
 def undistort_image(image, intrinsics, dist_coeffs):
-    """
-    Corrects the distortion in an image using the given camera parameters.
 
-    Args:
-        image (numpy.ndarray): The distorted input image.
-        intrinsics (numpy.ndarray): The intrinsic camera matrix.
-        dist_coeffs (numpy.ndarray): The distortion coefficients.
-
-    Returns:
-        numpy.ndarray: The undistorted image.
-    """
     h,  w = image.shape[:2]
 
     new_intrinsics, roi = cv2.getOptimalNewCameraMatrix(intrinsics, dist_coeffs, (w,h), 1, (w,h))

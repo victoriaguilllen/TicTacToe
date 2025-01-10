@@ -196,8 +196,3 @@ class Board:
         return blank_image
         
 
-
-
-
-
-            

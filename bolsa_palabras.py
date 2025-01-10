@@ -117,25 +117,25 @@ def predict_new(classifier, dataset) -> list:
 
 
 if __name__ == "__main__":
-    # descriptors = extract_descriptors()
-    # create_vocabulary(descriptors)
+    descriptors = extract_descriptors()
+    create_vocabulary(descriptors)
 
-    # # Train the classifier
-    # image_classifier, classifier = training_classificator()
+    # Train the classifier
+    image_classifier, classifier = training_classificator()
 
-    # #  Evaluate the model on the training set
-    # print("CONJUNTO DE ENTRENAMIENTO:")
-    # inference(classifier, training_set)
+    #  Evaluate the model on the training set
+    print("CONJUNTO DE ENTRENAMIENTO:")
+    inference(classifier, training_set)
 
-    # # Evaluate the model on the validation set
-    # print("CONJUNTO DE VALIDACIÓN:")
-    # inference(classifier, validation_set)
+    # Evaluate the model on the validation set
+    print("CONJUNTO DE VALIDACIÓN:")
+    inference(classifier, validation_set)
 
-    # # Re-evaluate the model with all images (training + validation sets combined)
-    # training_set = training_set + validation_set
-    # descriptors = extract_descriptors()
-    # create_vocabulary(descriptors)
-    # image_classifier, classifier = training_classificator()
+    # Re-evaluate the model with all images (training + validation sets combined)
+    training_set = training_set + validation_set
+    descriptors = extract_descriptors()
+    create_vocabulary(descriptors)
+    image_classifier, classifier = training_classificator()
 
     image_classifier = initialise_classifier()
     # Load new data and predict using tñhe trained classifier

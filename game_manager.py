@@ -20,6 +20,8 @@ data = np.load(f'{current_dir}/calibration/calib.npz')
 intrinsics = data['intrinsic']
 dist_coeffs = data['distortion']
 
+# Para ver el resultado corrigiendo la distorsión calibration = True
+calibration = False
 
 class GameManager:
     def __init__(self):
@@ -34,8 +36,6 @@ class GameManager:
 
         #variables para detectar el moviminto de un jugador
         self.turn = {'trajectory': [], 'last_detected_time': np.inf, 'has_detected_color': False, 'capture_trajectory': False}
-        # self.trajectory = [] #variable auxiliar para guardar trayectorias de las formas dibujadas, se reiniciará cuando la dorma haya sido detectada
-        # self.last_detected_time = -np.inf #variable que indica la última vez que se detecto el color rojo, se inicializa con un valor muy bajo
         self.timeout_threshold = 4 #segundos máximos  la espera de la detección del mismo color
 
 
@@ -283,7 +283,8 @@ class GameManager:
                 start_mode = True
 
             frame = security.draw_security_situation(frame, step)
-            # frame = undistort_image(frame, intrinsics, dist_coeffs)
+            if calibration:
+                frame = undistort_image(frame, intrinsics, dist_coeffs)
             cv2.imshow("Game", frame)
 
             # Salir al presionar 'q'
@@ -302,7 +303,8 @@ class GameManager:
 
             # Menú
             frame = self.draw_menu(frame)  # Mostrar el menú
-            # frame = undistort_image(frame, intrinsics, dist_coeffs)
+            if calibration:
+                frame = undistort_image(frame, intrinsics, dist_coeffs)
             cv2.imshow("Game", frame)
 
             # Esperar tecla para comenzar
@@ -335,7 +337,8 @@ class GameManager:
 
             # Mostrar el número de la cuenta atrás
             frame = self.draw_count_down(str(number), frame)
-            # frame = undistort_image(frame, intrinsics, dist_coeffs)
+            if calibration: 
+                frame = undistort_image(frame, intrinsics, dist_coeffs)
             cv2.imshow("Game", frame)
 
             # Salir al presionar 'q'
@@ -389,7 +392,8 @@ class GameManager:
                     self.reset_turn()
 
             frame = self.board.draw_board(frame)
-            # frame = undistort_image(frame, intrinsics, dist_coeffs)
+            if calibration:
+                frame = undistort_image(frame, intrinsics, dist_coeffs)
             cv2.imshow('Game', frame)
 
             # Salir al presionar 'q'

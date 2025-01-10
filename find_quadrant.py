@@ -3,19 +3,6 @@ import cv2
 
 
 def shi_tomasi_corner_detection(image: np.array, maxCorners: int, qualityLevel:float, minDistance: int, corner_color: tuple, radius: int):
-    '''
-    image - Input image
-    maxCorners - Maximum number of corners to return. 
-                 If there are more corners than are found, the strongest of them is returned. 
-                 maxCorners <= 0 implies that no limit on the maximum is set and all detected corners are returned
-    qualityLevel - Parameter characterizing the minimal accepted quality of image corners. 
-                   The parameter value is multiplied by the best corner quality measure, which is the minimal eigenvalue or the Harris function response. 
-                   The corners with the quality measure less than the product are rejected. 
-                   For example, if the best corner has the quality measure = 1500, and the qualityLevel=0.01 , then all the corners with the quality measure less than 15 are rejected
-    minDistance - Minimum possible Euclidean distance between the returned corners
-    corner_color - Desired color to highlight corners in the original image
-    radius - Desired radius (pixels) of the circle
-    '''
     
     # Input image to Tomasi corner detector should be grayscale 
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -38,19 +25,9 @@ def shi_tomasi_corner_detection(image: np.array, maxCorners: int, qualityLevel:f
         return np.array([])
 
 
+
 def get_quadrant(board_points: np.ndarray, point: np.ndarray) -> str:
-    '''
-    Determina en qué cuadrante se encuentra un punto respecto a los puntos de intersección del tablero.
     
-    Parameters:
-        board_points - Array con las coordenadas de las 4 esquinas del tablero [(x1, y1), (x2, y2), (x3, y3), (x4, y4)].
-        point - Coordenada del punto a evaluar (x, y).
-        
-    Returns:
-          cuadrante en matriz 3x3  [1,2,3
-                                    4,5,6
-                                    7,8,9]
-    '''
     # Los puntos del tablero son las intersecciones de las dos líneas (líneas horizontales y verticales)
     top_left, top_right, bottom_left, bottom_right = board_points
 
@@ -81,16 +58,6 @@ def get_quadrant(board_points: np.ndarray, point: np.ndarray) -> str:
     
 
 def check_coordinates_in_quadrants(board_points: np.ndarray, coordinates: np.ndarray) -> dict:
-    '''
-    Verifica en qué cuadrante se encuentran los puntos dados en coordinates respecto a las intersecciones del tablero.
-    
-    Parameters:
-        board_points - Array con las coordenadas de las 4 esquinas del tablero [(x1, y1), (x2, y2), (x3, y3), (x4, y4)].
-        coordinates - Lista de coordenadas de los puntos a verificar.
-        
-    Returns:
-        cuadrantes - Un diccionario con la cantidad de puntos en cada cuadrante.
-    '''
 
     cuadrantes = {1: 0, 2: 0, 3: 0, 
                   4: 0, 5: 0, 6: 0, 
@@ -110,16 +77,7 @@ def check_coordinates_in_quadrants(board_points: np.ndarray, coordinates: np.nda
 
 
 def sort_coordinates(coords):
-    """
-    Ordena 4 coordenadas dadas de la siguiente forma:
-    1: superior izquierdo, 2: superior derecho, 3: inferior izquierdo, 4: inferior derecho
     
-    Args:
-        coords (list or np.array): Lista o arreglo con las 4 coordenadas en formato (x, y).
-        
-    Returns:
-        list: Lista con las 4 coordenadas ordenadas en el formato (1, 2, 3, 4) especificado.
-    """
     top_left = coords[np.argmin(coords[:, 0] + coords[:, 1])]
     top_right = coords[np.argmin(coords[:, 1] - coords[:, 0])]
     bottom_left = coords[np.argmax(coords[:, 1] - coords[:, 0])]
