@@ -1,40 +1,42 @@
 <h1 style="color:rgb(183, 44, 72);"><strong>TIC-TAC-TOE ❌⭕</strong></h1>
 
-## Adaptación del popular juego 'Tres en raya' usando la visión por ordenador. Se trata del proyecto final de la asignatura de Visión por Ordenador de 3º de IMat. 
+## Adaptation of the popular game “Tic-Tac-Toe” using computer vision. This project was developed as the final assignment for the **Computer Vision** course (3rd year, Mathematical Engineering).
 
+---
 
-<h2 style="color:rgb(238, 137, 137);"><strong>INSTRUCCIONES</strong></h2>
+<h2 style="color:rgb(238, 137, 137);"><strong>INSTRUCTIONS</strong></h2>
 
-<h3 style="color:rgb(132, 132, 132);"><u>Selección modo de juego</u></h3>
-Al iniciar el juego, se presenta un menú donde puedes elegir entre dos modos:
-1. **Modo Individual**: Juegas contra la computadora.
-2. **Modo Multijugador**: Juegas contra otro jugador.
+<h3 style="color:rgb(132, 132, 132);"><u>Game Mode Selection</u></h3>
+When starting the game, a menu is displayed where you can choose between two modes:
+1. **Single Player Mode** – Play against the computer.
+2. **Multiplayer Mode** – Play against another player.
 
-<h3 style="color:rgb(132, 132, 132);"><u>Inicio del Juego</u></h3>
-Una vez seleccionado el modo, el juego comenzará con una cuenta regresiva de 3 segundos para prepararse.
+<h3 style="color:rgb(132, 132, 132);"><u>Game Start</u></h3>
+Once a mode is selected, the game begins after a 3-second countdown to prepare.
 
-<h3 style="color:rgb(132, 132, 132);"><u>Desarrollo del juego</u></h3>
+<h3 style="color:rgb(132, 132, 132);"><u>Gameplay</u></h3>
 
-- En tu turno, realiza tu movimiento colocando tu pieza (X o O) en el cuadrante del tablero que elijas.
-- Si estás jugando contra la computadora, el ordenador hará su movimiento automáticamente.
-- El jugador debe colocar la pieza en un espacio disponible, que será detectado por el sistema, el cual usa la tecnología de visión por computadora para identificar la ubicación donde el jugador está "dibujando" en el aire con el color rojo.
+- On your turn, place your piece (X or O) in any available cell on the board.  
+- If you’re playing against the computer, it will automatically make its move.  
+- The player performs movements using a **red-colored object**, which the system detects through **computer vision** to determine where the player is "drawing" in the air.
 
-<h3 style="color:rgb(132, 132, 132);"><u>Condición fin de juego</u></h3>
-El juego termina cuando uno de los jugadores logra alinear tres símbolos consecutivos en fila, columna o diagonal. Si el tablero se llena sin que nadie haya ganado, el juego termina en un empate.
+<h3 style="color:rgb(132, 132, 132);"><u>End of Game Condition</u></h3>
+The game ends when one of the players aligns three consecutive symbols horizontally, vertically, or diagonally.  
+If the board fills up without a winner, the game ends in a draw.
 
+---
 
-<h2 style="color:rgb(238, 137, 137);"><strong>PASOS A REPRODUCIR</strong></h2>
-Sigue los siguientes pasos para jugar al juego:
+<h2 style="color:rgb(238, 137, 137);"><strong>HOW TO RUN</strong></h2>
 
-   
-1. **Inicialización del juego:**
-   - Correr el siguiente archivo : `game_manager.py`
-   - El entrenamineto de la bolsa de palabras y la calibración ya se ha hecho.
+Follow these steps to play the game:
 
+1. **Game Initialization:**
+   - Run the following file: `game_manager.py`
+   - The **bag-of-words model** and **camera calibration** are already pre-trained and configured.
 
+---
 
-
-<h2 style="color:rgb(238, 137, 137);"><strong>ESTRUCTURA</strong></h2>
+<h2 style="color:rgb(238, 137, 137);"><strong>PROJECT STRUCTURE</strong></h2>
 
 ```
 |-- Final Project
@@ -57,15 +59,15 @@ Sigue los siguientes pasos para jugar al juego:
 ```
 
 
+
+---
+
 <h2 style="color:rgb(238, 137, 137);"><strong>REQUIREMENTS</strong></h2>
 
 ```python
 numpy==1.26.0
-scikit-learn==  1.3.1
+scikit-learn==1.3.1
 pandas==1.5.2
 tqdm==4.66.6
 opencv-python==4.8.0.76
-```
 
-
-<h2 style="color:rgb(238, 137, 137);"><strong>RECOMENDACIONES</strong></h2>
